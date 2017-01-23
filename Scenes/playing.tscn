@@ -1,0 +1,146 @@
+[gd_scene load_steps=12 format=1]
+
+[ext_resource path="res://Texture/mare.tex" type="Texture" id=1]
+[ext_resource path="res://Scripts/playing.gd" type="Script" id=2]
+[ext_resource path="res://Scripts/spawning.gd" type="Script" id=3]
+[ext_resource path="res://Texture/alga.tex" type="Texture" id=4]
+[ext_resource path="res://Texture/pesce.tex" type="Texture" id=5]
+[ext_resource path="res://Texture/perla.tex" type="Texture" id=6]
+[ext_resource path="res://Texture/stella.tex" type="Texture" id=7]
+[ext_resource path="res://Texture/shell.tex" type="Texture" id=8]
+[ext_resource path="res://Scenes/scrollSong.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Sounds/[No Copyright Music] Ukulele Bells - HookSounds.smp" type="Sample" id=10]
+
+[sub_resource type="SampleLibrary" id=1]
+
+"samples/[No Copyright Music] Ukulele Bells - HookSounds" = { "db":0.0, "pitch":1.0, "sample":ExtResource( 10 ) }
+
+[node name="Panel" type="TextureFrame"]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 3.0
+margin/top = 0.0
+margin/right = 723.0
+margin/bottom = 1280.0
+texture = ExtResource( 1 )
+stretch_mode = 0
+script/script = ExtResource( 2 )
+
+[node name="Spawn" type="Node2D" parent="."]
+
+editor/display_folded = true
+transform/pos = Vector2( 200, 0 )
+script/script = ExtResource( 3 )
+
+[node name="tempo" type="Timer" parent="Spawn"]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = false
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Spawn"]
+
+transform/pos = Vector2( -50, 1030 )
+transform/scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 4 )
+pressed = null
+bitmask = null
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="TouchScreenButton1" type="TouchScreenButton" parent="Spawn"]
+
+transform/pos = Vector2( -37, 1150 )
+transform/scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 5 )
+pressed = null
+bitmask = null
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="Spawn"]
+
+transform/pos = Vector2( 300, 1030 )
+transform/scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 6 )
+pressed = null
+bitmask = null
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="TouchScreenButton3" type="TouchScreenButton" parent="Spawn"]
+
+transform/pos = Vector2( 415, 1060 )
+transform/scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 7 )
+pressed = null
+bitmask = null
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="TouchScreenButton4" type="TouchScreenButton" parent="Spawn"]
+
+transform/pos = Vector2( 300, 1150 )
+transform/scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 8 )
+pressed = null
+bitmask = null
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="Viewport" type="Viewport" parent="."]
+
+rect = Rect2( 0, 0, 720, 1280 )
+own_world = false
+world = null
+transparent_bg = true
+render_target/enabled = false
+render_target/v_flip = false
+render_target/clear_on_new_frame = false
+render_target/filter = false
+render_target/gen_mipmaps = false
+render_target/update_mode = 2
+audio_listener/enable_2d = false
+audio_listener/enable_3d = false
+physics/object_picking = false
+gui/disable_input = false
+
+[node name="Panel" parent="." instance=ExtResource( 9 )]
+
+margin/left = 0.0
+margin/right = 720.0
+margin/bottom = 148.0
+
+[node name="musica" type="SamplePlayer" parent="."]
+
+config/polyphony = 1
+config/samples = SubResource( 1 )
+default/volume_db = 0.0
+default/pitch_scale = 1.0
+default/pan = 0.0
+default/depth = 0.0
+default/height = 0.0
+default/filter/type = 0
+default/filter/cutoff = 5000.0
+default/filter/resonance = 1.0
+default/filter/gain = 1.0
+default/reverb_room = 2
+default/reverb_send = 0.0
+default/chorus_send = 0.0
+
+[connection signal="timeout" from="Spawn/tempo" to="." method="_on_tempo_timeout"]
+
+[connection signal="pressed" from="Spawn/TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
+
+[connection signal="pressed" from="Spawn/TouchScreenButton" to="Spawn" method="_on_TouchScreenButton_pressed"]
+
+

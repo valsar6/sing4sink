@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://Texture/barca.tex" type="Texture" id=1]
+[ext_resource path="res://Scenes/navetta.gd" type="Script" id=2]
+
+[node name="navetta" type="TextureFrame" groups=[ "nemici" ]]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = -11.0
+margin/top = -253.0
+margin/right = 234.0
+margin/bottom = 67.0
+texture = ExtResource( 1 )
+stretch_mode = 0
+script/script = ExtResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+transform/pos = Vector2( 90, 305.07 )
+z/relative = false
+rect = Rect2( 20, 20, 30, 0 )
+
+
