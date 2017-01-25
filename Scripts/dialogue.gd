@@ -16,9 +16,9 @@ func _ready():
 func _on_TouchScreenButton_pressed():
 	var c = "DIAG1-" + String(a)
 	var sirena = get_node("sirena")
-	var spiaggia2 = load("res://Texture/sfondo mare2.tex")
-	var sirenaRabbia = load("res://Texture/sirena rabbia picc.tex")
-	var sirenaPreoccupata = load("res://Texture/sirena preoccupata picc.tex")
+	var spiaggia2 = load("res://Texture/dialogue_screen/sfondo mare2.tex")
+	var sirenaRabbia = load("res://Texture/dialogue_screen/sirena rabbia picc.tex")
+	var sirenaPreoccupata = load("res://Texture/dialogue_screen/sirena preoccupata picc.tex")
 	var tempo= get_node("tempo")
 	get_node("dialogueBox").show()
 	var testo = get_node("dialogueBox/RichTextLabel")
@@ -26,11 +26,11 @@ func _on_TouchScreenButton_pressed():
 	testo.clear()
 	testo.add_text(tr(c))
 	a += 1
-	print("hai premuto il tasto")
-	print(a)
-	print(c)
+	
+	# Ingresso Silene
 	if (a > 2):
 		sirena.show()
+	# Cambio Musica, Silene si preoccupa
 	if(a > 5):
 		musica += 1
 		self.set_texture(spiaggia2)
@@ -38,16 +38,18 @@ func _on_TouchScreenButton_pressed():
 		if(musica == 1): 
 			get_node("SamplePlayer").stop_all()
 			get_node("SamplePlayer").play("musicamarco")
-			
+		#Silene si arrabbia
 	if (a > 8):
 		sirena.set_texture(sirenaRabbia)
 	if (a > 9):
 		get_node("SamplePlayer").play("plup")
 		var start = OS.get_unix_time()
 		tempo.connect("timeout", self, "queue_free")
+		get_node("dialogueBox/RichTextLabel").set_visible_characters(0)
 		if (a == 10):
 			tempo.set_wait_time(1)
 			tempo.start()
+		
 
 func _on_tempo_timeout():
 	get_tree().change_scene("res://Scenes/playing.tscn")
