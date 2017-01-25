@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://Texture/menu/options/fondo opzioni.tex" type="Texture" id=1]
+[ext_resource path="res://Scripts/optionsMenu.gd" type="Script" id=2]
+[ext_resource path="res://Texture/menu/options/volume.tex" type="Texture" id=3]
+[ext_resource path="res://Texture/menu/options/language.tex" type="Texture" id=4]
+[ext_resource path="res://Texture/menu/options/credits.tex" type="Texture" id=5]
+[ext_resource path="res://Texture/menu/options/back.tex" type="Texture" id=6]
+
+[node name="options" type="TextureFrame"]
+
+anchor/right = 1
+anchor/bottom = 1
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 14.0
+margin/top = 185.0
+margin/right = 14.0
+margin/bottom = 201.0
+texture = ExtResource( 1 )
+stretch_mode = 0
+script/script = ExtResource( 2 )
+
+[node name="volume" type="TouchScreenButton" parent="."]
+
+transform/pos = Vector2( 220, 148 )
+normal = ExtResource( 3 )
+pressed = null
+bitmask = null
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="language" type="TouchScreenButton" parent="."]
+
+transform/pos = Vector2( 220, 334 )
+normal = ExtResource( 4 )
+pressed = null
+bitmask = null
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="credits" type="TouchScreenButton" parent="."]
+
+transform/pos = Vector2( 200, 520 )
+normal = ExtResource( 5 )
+pressed = null
+bitmask = null
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="back" type="TouchScreenButton" parent="."]
+
+transform/pos = Vector2( 220, 700 )
+normal = ExtResource( 6 )
+pressed = null
+bitmask = null
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[connection signal="pressed" from="volume" to="." method="_on_volume_pressed"]
+
+[connection signal="pressed" from="language" to="." method="_on_language_pressed"]
+
+[connection signal="pressed" from="credits" to="." method="_on_credits_pressed"]
+
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]
+
+

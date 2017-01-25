@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=1]
 
-[ext_resource path="res://Texture/barra simboli.tex" type="Texture" id=1]
+[ext_resource path="res://Texture/battle_screen/battle_hud/barra simboli.tex" type="Texture" id=1]
 [ext_resource path="res://Scripts/notesSpawn.gd" type="Script" id=2]
 
 [sub_resource type="StyleBoxTexture" id=1]
@@ -20,7 +20,7 @@ expand_margin/top = 0.0
 expand_margin/bottom = 0.0
 draw_center = true
 
-[node name="Panel" type="Panel"]
+[node name="sparaNote" type="Panel"]
 
 focus/ignore_mouse = false
 focus/stop_mouse = true

@@ -1,19 +1,23 @@
-[gd_scene load_steps=12 format=1]
+[gd_scene load_steps=15 format=1]
 
-[ext_resource path="res://Texture/mare.tex" type="Texture" id=1]
+[ext_resource path="res://Texture/battle_screen/battle_hud/commands/mare.tex" type="Texture" id=1]
 [ext_resource path="res://Scripts/playing.gd" type="Script" id=2]
 [ext_resource path="res://Scripts/spawning.gd" type="Script" id=3]
-[ext_resource path="res://Texture/alga.tex" type="Texture" id=4]
-[ext_resource path="res://Texture/pesce.tex" type="Texture" id=5]
-[ext_resource path="res://Texture/perla.tex" type="Texture" id=6]
-[ext_resource path="res://Texture/stella.tex" type="Texture" id=7]
-[ext_resource path="res://Texture/shell.tex" type="Texture" id=8]
-[ext_resource path="res://Scenes/scrollSong.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Sounds/[No Copyright Music] Ukulele Bells - HookSounds.smp" type="Sample" id=10]
+[ext_resource path="res://Sounds/Sample/220207__gameaudio__boot-sound.smp" type="Sample" id=4]
+[ext_resource path="res://Sounds/Sample/220208__gameaudio__click-pop-two-part.smp" type="Sample" id=5]
+[ext_resource path="res://Scenes/scrollSong.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Fonts/numeroni.fnt" type="BitmapFont" id=7]
+[ext_resource path="res://Sounds/Music/[No Copyright Music] Ukulele Bells - HookSounds_1.opus" type="AudioStream" id=8]
+[ext_resource path="res://Texture/battle_screen/battle_hud/commands/alga.tex" type="Texture" id=9]
+[ext_resource path="res://Texture/battle_screen/battle_hud/commands/pesce.tex" type="Texture" id=10]
+[ext_resource path="res://Texture/battle_screen/battle_hud/commands/perla.tex" type="Texture" id=11]
+[ext_resource path="res://Texture/battle_screen/battle_hud/commands/stella.tex" type="Texture" id=12]
+[ext_resource path="res://Texture/battle_screen/battle_hud/commands/shell.tex" type="Texture" id=13]
 
 [sub_resource type="SampleLibrary" id=1]
 
-"samples/[No Copyright Music] Ukulele Bells - HookSounds" = { "db":0.0, "pitch":1.0, "sample":ExtResource( 10 ) }
+samples/220207__gameaudio__boot-sound = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
+samples/220208__gameaudio__click-pop-two-part = { "db":10.0, "pitch":1.0, "sample":ExtResource( 5 ) }
 
 [node name="Panel" type="TextureFrame"]
 
@@ -31,7 +35,6 @@ script/script = ExtResource( 2 )
 
 [node name="Spawn" type="Node2D" parent="."]
 
-editor/display_folded = true
 transform/pos = Vector2( 200, 0 )
 script/script = ExtResource( 3 )
 
@@ -41,61 +44,6 @@ process_mode = 1
 wait_time = 1.0
 one_shot = false
 autostart = false
-
-[node name="TouchScreenButton" type="TouchScreenButton" parent="Spawn"]
-
-transform/pos = Vector2( -50, 1030 )
-transform/scale = Vector2( 0.5, 0.5 )
-normal = ExtResource( 4 )
-pressed = null
-bitmask = null
-passby_press = false
-action = ""
-visibility_mode = 0
-
-[node name="TouchScreenButton1" type="TouchScreenButton" parent="Spawn"]
-
-transform/pos = Vector2( -37, 1150 )
-transform/scale = Vector2( 0.5, 0.5 )
-normal = ExtResource( 5 )
-pressed = null
-bitmask = null
-passby_press = false
-action = ""
-visibility_mode = 0
-
-[node name="TouchScreenButton2" type="TouchScreenButton" parent="Spawn"]
-
-transform/pos = Vector2( 300, 1030 )
-transform/scale = Vector2( 0.5, 0.5 )
-normal = ExtResource( 6 )
-pressed = null
-bitmask = null
-passby_press = false
-action = ""
-visibility_mode = 0
-
-[node name="TouchScreenButton3" type="TouchScreenButton" parent="Spawn"]
-
-transform/pos = Vector2( 415, 1060 )
-transform/scale = Vector2( 0.5, 0.5 )
-normal = ExtResource( 7 )
-pressed = null
-bitmask = null
-passby_press = false
-action = ""
-visibility_mode = 0
-
-[node name="TouchScreenButton4" type="TouchScreenButton" parent="Spawn"]
-
-transform/pos = Vector2( 300, 1150 )
-transform/scale = Vector2( 0.5, 0.5 )
-normal = ExtResource( 8 )
-pressed = null
-bitmask = null
-passby_press = false
-action = ""
-visibility_mode = 0
 
 [node name="Viewport" type="Viewport" parent="."]
 
@@ -114,13 +62,7 @@ audio_listener/enable_3d = false
 physics/object_picking = false
 gui/disable_input = false
 
-[node name="Panel" parent="." instance=ExtResource( 9 )]
-
-margin/left = 0.0
-margin/right = 720.0
-margin/bottom = 148.0
-
-[node name="musica" type="SamplePlayer" parent="."]
+[node name="playerone" type="SamplePlayer" parent="."]
 
 config/polyphony = 1
 config/samples = SubResource( 1 )
@@ -137,10 +79,124 @@ default/reverb_room = 2
 default/reverb_send = 0.0
 default/chorus_send = 0.0
 
+[node name="sparaNote" parent="." instance=ExtResource( 6 )]
+
+[node name="tabellone" type="RichTextLabel" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 602.0
+margin/top = 196.0
+margin/right = 702.0
+margin/bottom = 296.0
+custom_fonts/normal_font = ExtResource( 7 )
+custom_colors/default_color = Color( 0.917969, 0.905474, 0.118332, 1 )
+bbcode/enabled = false
+bbcode/bbcode = ""
+visible_characters = -1
+
+[node name="musichetta" type="StreamPlayer" parent="."]
+
+stream/stream = ExtResource( 8 )
+stream/play = false
+stream/loop = true
+stream/volume_db = 0.0
+stream/autoplay = true
+stream/paused = false
+stream/loop_restart_time = 0.0
+stream/buffering_ms = 500
+
+[node name="alga" type="TouchScreenButton" parent="." groups=[ "4verde" ]]
+
+transform/pos = Vector2( 490, 1180 )
+transform/scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 9 )
+pressed = null
+bitmask = null
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="pesce" type="TouchScreenButton" parent="." groups=[ "0blu" ]]
+
+transform/pos = Vector2( 23, 1090 )
+transform/scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 10 )
+pressed = null
+bitmask = null
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="perla" type="TouchScreenButton" parent="." groups=[ "3viola" ]]
+
+transform/pos = Vector2( 520, 1080 )
+transform/scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 11 )
+pressed = null
+bitmask = null
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="stella" type="TouchScreenButton" parent="." groups=[ "1rosso" ]]
+
+transform/pos = Vector2( 125, 1088.15 )
+transform/scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 12 )
+pressed = null
+bitmask = null
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="conchiglia" type="TouchScreenButton" parent="." groups=[ "2giallo" ]]
+
+transform/pos = Vector2( 140, 1180 )
+transform/scale = Vector2( 0.5, 0.5 )
+normal = ExtResource( 13 )
+pressed = null
+bitmask = null
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="attack_time" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 1.0
+one_shot = false
+autostart = true
+
+[node name="killsNavi" type="RichTextLabel" parent="."]
+
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 20.0
+margin/top = 196.0
+margin/right = 120.0
+margin/bottom = 296.0
+custom_fonts/normal_font = ExtResource( 7 )
+bbcode/enabled = false
+bbcode/bbcode = ""
+visible_characters = -1
+
 [connection signal="timeout" from="Spawn/tempo" to="." method="_on_tempo_timeout"]
 
-[connection signal="pressed" from="Spawn/TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
+[connection signal="pressed" from="alga" to="." method="_on_alga_pressed"]
 
-[connection signal="pressed" from="Spawn/TouchScreenButton" to="Spawn" method="_on_TouchScreenButton_pressed"]
+[connection signal="pressed" from="pesce" to="." method="_on_pesce_pressed"]
+
+[connection signal="pressed" from="perla" to="." method="_on_perla_pressed"]
+
+[connection signal="pressed" from="stella" to="." method="_on_stella_pressed"]
+
+[connection signal="pressed" from="conchiglia" to="." method="_on_conchiglia_pressed"]
+
+[connection signal="timeout" from="attack_time" to="." method="_on_attack_time_timeout"]
 
 

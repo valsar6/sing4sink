@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=1]
+
+[ext_resource path="res://Texture/battle_screen/sprites/frecce.tex" type="Texture" id=1]
+[ext_resource path="res://Scripts/freccia.gd" type="Script" id=2]
+
+[node name="freccia" type="Sprite"]
+
+transform/pos = Vector2( 290, 610 )
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
+script/script = ExtResource( 2 )
+
+[connection signal="enter_tree" from="." to="." method="_on_freccia_enter_tree"]
+
+

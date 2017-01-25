@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=1]
 
-[ext_resource path="res://Texture/barca.tex" type="Texture" id=1]
+[ext_resource path="res://Texture/battle_screen/sprites/barca.tex" type="Texture" id=1]
 [ext_resource path="res://Scenes/navetta.gd" type="Script" id=2]
 
 [node name="navetta" type="TextureFrame" groups=[ "nemici" ]]

@@ -1,13 +1,13 @@
 [gd_scene load_steps=10 format=1]
 
-[ext_resource path="res://Texture/Sirena copiadef.tex" type="Texture" id=1]
+[ext_resource path="res://Texture/menu/splashScreen/Sirena copiadef.tex" type="Texture" id=1]
 [ext_resource path="res://Scripts/splashScreen.gd" type="Script" id=2]
-[ext_resource path="res://Texture/entra.tex" type="Texture" id=3]
-[ext_resource path="res://Texture/glossy-green-circle-button-md.tex" type="Texture" id=4]
+[ext_resource path="res://Texture/menu/splashScreen/entra.tex" type="Texture" id=3]
+[ext_resource path="res://Texture/menu/splashScreen/glossy-green-circle-button-md.tex" type="Texture" id=4]
 [ext_resource path="res://Scripts/sparkling.gd" type="Script" id=5]
-[ext_resource path="res://Sounds/220207__gameaudio__boot-sound.smp" type="Sample" id=6]
-[ext_resource path="res://Sounds/220208__gameaudio__click-pop-two-part.smp" type="Sample" id=7]
-[ext_resource path="res://Sounds/plup.smp" type="Sample" id=8]
+[ext_resource path="res://Sounds/Sample/220207__gameaudio__boot-sound.smp" type="Sample" id=6]
+[ext_resource path="res://Sounds/Sample/220208__gameaudio__click-pop-two-part.smp" type="Sample" id=7]
+[ext_resource path="res://Sounds/Sample/plup.smp" type="Sample" id=8]
 
 [sub_resource type="SampleLibrary" id=1]
 
@@ -23,8 +23,8 @@ size_flags/horizontal = 2
 size_flags/vertical = 2
 margin/left = 0.0
 margin/top = 0.0
-margin/right = 40.0
-margin/bottom = 40.0
+margin/right = 720.0
+margin/bottom = 1280.0
 texture = ExtResource( 1 )
 stretch_mode = 0
 script/script = ExtResource( 2 )

@@ -3,6 +3,7 @@ extends TextureFrame
 # class member variables go here, for example:
 # var a = 2
 # var b = "textvar"
+var VITA = 3.0
 const SPEED = 1.5
 const TEMPO = 20
 func _ready():
@@ -17,6 +18,10 @@ func _process(delta):
 #	Condizioni per la morte	
 	if (visibile.is_on_screen() != true):
 		self.free()
-	
+		
+	elif (VITA == 0):
+		global.killsNavi += 1
+		self.free()
+		
 	
 	
